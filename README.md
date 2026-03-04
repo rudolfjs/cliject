@@ -1,4 +1,4 @@
-# cliject
+# cliject - GitHub Project boards in the terminal
 
 GitHub Projects V2 terminal board viewer. Fetches project data via the GitHub GraphQL API and renders it as a Kanban-style board in your terminal.
 
