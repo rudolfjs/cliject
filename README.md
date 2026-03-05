@@ -5,7 +5,9 @@ GitHub Projects V2 terminal board viewer. Fetches project data via the GitHub Gr
 ## Requirements
 
 - Python 3.10+
-- [gh CLI](https://cli.github.com/) authenticated (`gh auth login`)
+- [gh CLI](https://cli.github.com/) authenticated with the `read:project` scope.
+  - First time: `gh auth login` then `gh auth refresh -s read:project`
+  - Already authenticated: Ensure `gh auth refresh -s read:project` is added
 
 ## Installation
 
@@ -107,4 +109,18 @@ cliject/
 ├── board.py     # Business logic: fetch_projects, fetch_board
 ├── render.py    # Rich terminal rendering
 └── main.py      # Typer CLI entry point
+```
+
+## Formatting and testing
+
+To run `ruff` linting along with `pytest` you can do it the following way:
+
+```bash
+# install dev packages
+pip install -e ".[dev]"
+# run linting
+ruff check cliject
+ruff format --check cliject
+# run tests
+pytest
 ```

@@ -1,13 +1,7 @@
 from typing import Optional
 
-from .auth import get_token, get_viewer_login
 from .api import execute_query, paginate_query
-from .queries import (
-    LIST_VIEWER_PROJECTS,
-    LIST_ORG_PROJECTS,
-    GET_PROJECT_FIELDS,
-    GET_PROJECT_ITEMS,
-)
+from .auth import get_token, get_viewer_login
 from .models import (
     Assignee,
     Board,
@@ -16,6 +10,12 @@ from .models import (
     Label,
     Project,
     StatusOption,
+)
+from .queries import (
+    GET_PROJECT_FIELDS,
+    GET_PROJECT_ITEMS,
+    LIST_ORG_PROJECTS,
+    LIST_VIEWER_PROJECTS,
 )
 
 
@@ -65,9 +65,7 @@ def _get_project_data(token: str, number: int, org: Optional[str]) -> dict:
     return root.get("viewer", {}).get("projectV2", {})
 
 
-def _extract_status_options(
-    project_data: dict, group_by_field: str
-) -> tuple[list[StatusOption], str]:
+def _extract_status_options(project_data: dict, group_by_field: str) -> tuple[list[StatusOption], str]:
     """Return (status_options, field_name). field_name is the matched field name."""
     fields_nodes = project_data.get("fields", {}).get("nodes", [])
     for field_node in fields_nodes:
@@ -198,10 +196,7 @@ def fetch_board(
 
     if assigned_to_me:
         viewer_login = get_viewer_login()
-        parsed_items = [
-            item for item in parsed_items
-            if any(a.login == viewer_login for a in item.assignees)
-        ]
+        parsed_items = [item for item in parsed_items if any(a.login == viewer_login for a in item.assignees)]
 
     # 4. Group into columns
     column_map: dict[str, BoardColumn] = {}

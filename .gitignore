@@ -39,3 +39,7 @@ pip-delete-this-directory.txt
 
 # Claude Code project files
 .claude/
+# pixi environments
+.pixi/*
+!.pixi/config.toml
+pixi.lock

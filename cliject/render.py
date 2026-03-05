@@ -172,11 +172,14 @@ def render_board_list(board: Board, show_empty: bool = False) -> None:
     all_columns = list(board.columns)
     if board.no_status_items:
         from .models import BoardColumn
-        all_columns.append(BoardColumn(
-            name=f"No {board.status_field_name}",
-            color="GRAY",
-            items=board.no_status_items,
-        ))
+
+        all_columns.append(
+            BoardColumn(
+                name=f"No {board.status_field_name}",
+                color="GRAY",
+                items=board.no_status_items,
+            )
+        )
 
     any_printed = False
     for col in all_columns:
