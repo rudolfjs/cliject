@@ -32,9 +32,9 @@ Pin to a specific tag or commit:
 uvx --from git+https://github.com/rudolfjs/cliject@v0.1.0 cliject board 4
 ```
 
-### Via pixi (if using the pixi workspace)
+### Via pixi (if you have the repo cloned)
 
-`uv` is included as a pixi dependency, so `uvx` is available inside the pixi environment:
+If you're already working in the pixi workspace, `uv` is included as a dependency and a `uvx` task is provided as a shorthand. It runs `uvx --from git+https://github.com/rudolfjs/cliject cliject` under the hood — still fetching from git, not the local working copy:
 
 ```bash
 pixi run uvx board 4
