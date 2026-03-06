@@ -22,3 +22,10 @@ def get_default_board(org: Optional[str] = None) -> Optional[int]:
 def get_default_view() -> str:
     config = load_config()
     return config.get("default_view", "kanban")
+
+
+def get_default_column(org: Optional[str] = None) -> Optional[str]:
+    config = load_config()
+    if org:
+        return config.get("orgs", {}).get(org, {}).get("default_column")
+    return config.get("default_column")
