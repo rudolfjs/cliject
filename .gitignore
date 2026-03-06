@@ -42,4 +42,3 @@ pip-delete-this-directory.txt
 # pixi environments
 .pixi/*
 !.pixi/config.toml
-pixi.lock
