@@ -16,6 +16,10 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest", "pytest-mock>=3.15.1", "respx>=0.22.0", "ruff"]
 
+[project.urls]
+Homepage = "https://github.com/rudolfjs/cliject"
+Source = "https://github.com/rudolfjs/cliject"
+
 [project.scripts]
 cliject = "cliject.main:app"
 
@@ -26,6 +30,9 @@ include = ["cliject*"]
 [tool.pixi.workspace]
 channels = ["conda-forge"]
 platforms = ["linux-64", "osx-arm64", "osx-64"]
+
+[tool.pixi.dependencies]
+uv = "*"
 
 [tool.pixi.pypi-dependencies]
 cliject = { path = ".", editable = true }
@@ -56,6 +63,7 @@ lint = { cmd = "ruff check cliject", description = "Lint source code" }
 fmt = { cmd = "ruff format cliject", description = "Format source code" }
 fmt-check = { cmd = "ruff format --check cliject", description = "Check formatting (CI)" }
 ci = { depends-on = ["lint", "fmt-check", "test"], description = "Full CI: lint, format-check, tests" }
+uvx = { cmd = "uvx --from git+https://github.com/rudolfjs/cliject cliject", description = "Run cliject via uvx from git" }
 
 [tool.ruff]
 target-version = "py310"

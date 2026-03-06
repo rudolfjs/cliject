@@ -11,8 +11,40 @@ GitHub Projects V2 terminal board viewer. Fetches project data via the GitHub Gr
 
 ## Installation
 
+### Via uvx (no clone or PyPI needed)
+
+Run once without installing anything permanently:
+
 ```bash
-pip install -e .
+uvx --from git+https://github.com/rudolfjs/cliject cliject board 4
+```
+
+Install persistently so `cliject` is on your PATH:
+
+```bash
+uv tool install git+https://github.com/rudolfjs/cliject
+cliject board 4
+```
+
+Pin to a specific tag or commit:
+
+```bash
+uvx --from git+https://github.com/rudolfjs/cliject@v0.1.0 cliject board 4
+```
+
+### Via pixi (if using the pixi workspace)
+
+`uv` is included as a pixi dependency, so `uvx` is available inside the pixi environment:
+
+```bash
+pixi run uvx board 4
+pixi run uvx list
+```
+
+### Local development
+
+```bash
+pip install -e ".[dev]"
 ```
 
 ## Usage
